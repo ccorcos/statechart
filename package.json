@@ -1,29 +1,30 @@
 {
-  "name": "reason-react-example",
+  "name": "statechart",
   "private": true,
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "bsb -make-world -w",
-    "build": "webpack -w",
+    "start": "concurrently --prefix '[{name}]' --names 'bucklescript,webpack' -c 'bgBlue.bold,bgMagenta.bold' 'npm run compile' 'npm run dev'",
+    "compile": "bsb -make-world -w",
+    "dev": "webpack-dev-server --content-base dist",
+    "build": "rm -rf dist && bsb -make-world && webpack -p",
     "clean": "bsb -clean-world"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "director": "^1.2.0",
     "react-dom": "^15.4.2",
     "react": "^15.4.2",
     "reason-js": "0.3.0",
-    "reason-react": "https://github.com/reasonml/reason-react.git",
-    "todomvc-app-css": "^2.0.0",
-    "todomvc-common": "^1.0.1"
+    "reason-react": "https://github.com/reasonml/reason-react.git"
   },
   "devDependencies": {
     "bs-platform": "https://github.com/bloomberg/bucklescript.git",
-    "webpack": "^1.14.0"
+    "concurrently": "^3.4.0",
+    "html-webpack-plugin": "^2.28.0",
+    "webpack": "^2.3.2",
+    "webpack-dev-server": "^2.4.2"
   }
 }
