@@ -41,8 +41,7 @@ let pointsToRect (p1: point) (p2: point) => {
 
 let renderList l => l |> Array.of_list |> ReactRe.arrayToElement;
 
-/* let height = ReasonJs.Dom.Window.innerHeight ReasonJs.Dom.window |> float_of_int; */
-/* let width = ReasonJs.Dom.Window.innerWidth ReasonJs.Dom.window |> float_of_int; */
+/* https://github.com/BuckleTypes/reason-js/pull/50 */
 external top : Dom.domRect => int = "top" [@@bs.get];
 
 external left : Dom.domRect => int = "left" [@@bs.get];
